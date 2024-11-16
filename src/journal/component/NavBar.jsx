@@ -2,12 +2,19 @@ import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid2, IconButton, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { startLogout } from "../../store/auth/thunks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { trueOrFalse } from "../../store/journal/boolSlice";
 
 export const NavBar = ({ drawerWidth = 200 }) => {
+  const { bool } = useSelector((state) => state.bool);
   const dispatch = useDispatch();
   const onLogout = () => {
     dispatch(startLogout());
+  };
+
+  const onOpen = () => {
+    const bolean = dispatch(trueOrFalse());
+    console.log(bolean);
   };
 
   return (
@@ -19,7 +26,11 @@ export const NavBar = ({ drawerWidth = 200 }) => {
       }}
     >
       <Toolbar>
-        <IconButton color="inherit" sx={{ mr: 2, display: { sm: "none" } }}>
+        <IconButton
+          onClick={onOpen}
+          color="inherit"
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
           <MenuOutlined />
         </IconButton>
         <Grid2

@@ -133,7 +133,7 @@ export const NoteView = ({ drawerWidth = 240 }) => {
         />
       </Grid2>
       <Grid2 container justifyContent="end" alignContent="center">
-        <Button onClick={onDelete} sx={{ mt: 2 }}>
+        <Button onClick={onDelete} sx={{ mt: 2 }} disabled={isSaving}>
           <DeleteOutlineRounded />
           <p>Borrar</p>
         </Button>

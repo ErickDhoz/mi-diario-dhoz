@@ -85,8 +85,33 @@ export const SideBar = ({ drawerWidth }) => {
                   <TurnedInNot sx={{ color: "primary.main" }} />
                 </ListItemIcon>
                 <Grid2 container>
-                  <ListItemText primary={note.title} />
-                  <ListItemText secondary={note.body} />
+                  <Grid2
+                    sx={{
+                      width: "100vw",
+                      backgroundColor: "whitesmoke",
+                      marginLeft: 1,
+                      paddingLeft: 1,
+                      borderRadius: 2,
+                    }}
+                  >
+                    <ListItemText
+                      primary={
+                        note.title.length >= 20
+                          ? note.title.slice(0, 15) + "..."
+                          : note.title
+                      }
+                    />
+                  </Grid2>
+
+                  <Grid2 sx={{ width: "100vw" }}>
+                    <ListItemText
+                      secondary={
+                        note.body.length >= 50
+                          ? note.body.slice(0, 20) + "..."
+                          : note.body
+                      }
+                    />
+                  </Grid2>
                 </Grid2>
               </ListItemButton>
             </ListItem>
